@@ -1,37 +1,120 @@
+// import { http, createConfig } from "wagmi";
+// import { mainnet, sepolia } from "wagmi/chains";
+
+// // Define Sonic Blaze Testnet chain
+// export const sonicBlazeTestnet = {
+//   id: 57054,
+//   name: "Sonic Blaze Testnet",
+//   network: "sonic-blaze",
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: "Sonic",
+//     symbol: "S",
+//   },
+//   rpcUrls: {
+//     public: { http: ["https://rpc.blaze.soniclabs.com"] },
+//     default: { http: ["https://rpc.blaze.soniclabs.com"] },
+//   },
+//   blockExplorers: {
+//     default: { name: "Sonic Explorer", url: "https://blaze.soniclabs.com" },
+//   },
+// } as const;
+
+// // Create Wagmi config
+// export const config = createConfig({
+//   chains: [mainnet, sepolia, sonicBlazeTestnet],
+//   transports: {
+//     [mainnet.id]: http(),
+//     [sepolia.id]: http(),
+//     [sonicBlazeTestnet.id]: http(),
+//   },
+// });
+
+// // Helper function to add Sonic Blaze Testnet to MetaMask
+// export const addSonicBlazeTestnet = async () => {
+//   if (!window.ethereum) {
+//     console.error("MetaMask not detected");
+//     return false;
+//   }
+
+//   try {
+//     await window.ethereum.request({
+//       method: "wallet_addEthereumChain",
+//       params: [
+//         {
+//           chainId: `0x${sonicBlazeTestnet.id.toString(16)}`, // Chain ID must be in hex format
+//           chainName: sonicBlazeTestnet.name,
+//           nativeCurrency: sonicBlazeTestnet.nativeCurrency,
+//           rpcUrls: [sonicBlazeTestnet.rpcUrls.default.http[0]],
+//           blockExplorerUrls: [sonicBlazeTestnet.blockExplorers.default.url],
+//         },
+//       ],
+//     });
+//     return true;
+//   } catch (error) {
+//     console.error("Failed to add Sonic Blaze Testnet:", error);
+//     return false;
+//   }
+// };
+
+// // Helper function to switch to Sonic Blaze Testnet
+// export const switchToSonicBlazeTestnet = async () => {
+//   if (!window.ethereum) {
+//     console.error("MetaMask not detected");
+//     return false;
+//   }
+
+//   try {
+//     await window.ethereum.request({
+//       method: "wallet_switchEthereumChain",
+//       params: [{ chainId: `0x${sonicBlazeTestnet.id.toString(16)}` }],
+//     });
+//     return true;
+//   } catch (error: any) {
+    
+//     if (error.code === 4902) {
+//       return addSonicBlazeTestnet();
+//     }
+//     console.error("Failed to switch to Sonic Blaze Testnet:", error);
+//     return false;
+//   }
+// };
+
+
 import { http, createConfig } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
 
-// Define Sonic Blaze Testnet chain
-export const sonicBlazeTestnet = {
-  id: 57054,
-  name: "Sonic Blaze Testnet",
-  network: "sonic-blaze",
+// Define EduChain Testnet chain
+export const eduChainTestnet = {
+  id: 656476,
+  name: "EDU Chain Testnet",
+  network: "EDU Chain Testnet",
   nativeCurrency: {
     decimals: 18,
-    name: "Sonic",
-    symbol: "S",
+    name: "EduChain",
+    symbol: "EDU",
   },
   rpcUrls: {
-    public: { http: ["https://rpc.blaze.soniclabs.com"] },
-    default: { http: ["https://rpc.blaze.soniclabs.com"] },
+    public: { http: ["https://rpc.open-campus-codex.gelato.digital"] },
+    default: { http: ["https://rpc.open-campus-codex.gelato.digital"] },
   },
   blockExplorers: {
-    default: { name: "Sonic Explorer", url: "https://blaze.soniclabs.com" },
+    default: { name: "EduChain Explorer", url: "https://opencampus-codex.blockscout.com/" },
   },
 } as const;
 
 // Create Wagmi config
 export const config = createConfig({
-  chains: [mainnet, sepolia, sonicBlazeTestnet],
+  chains: [mainnet, sepolia, eduChainTestnet],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
-    [sonicBlazeTestnet.id]: http(),
+    [eduChainTestnet.id]: http(),
   },
 });
 
-// Helper function to add Sonic Blaze Testnet to MetaMask
-export const addSonicBlazeTestnet = async () => {
+// Helper function to add EduChain Testnet to MetaMask
+export const addEduChainTestnet = async () => {
   if (!window.ethereum) {
     console.error("MetaMask not detected");
     return false;
@@ -42,23 +125,23 @@ export const addSonicBlazeTestnet = async () => {
       method: "wallet_addEthereumChain",
       params: [
         {
-          chainId: `0x${sonicBlazeTestnet.id.toString(16)}`, // Chain ID must be in hex format
-          chainName: sonicBlazeTestnet.name,
-          nativeCurrency: sonicBlazeTestnet.nativeCurrency,
-          rpcUrls: [sonicBlazeTestnet.rpcUrls.default.http[0]],
-          blockExplorerUrls: [sonicBlazeTestnet.blockExplorers.default.url],
+          chainId: `0x${eduChainTestnet.id.toString(16)}`, // Chain ID must be in hex format
+          chainName: eduChainTestnet.name,
+          nativeCurrency: eduChainTestnet.nativeCurrency,
+          rpcUrls: [eduChainTestnet.rpcUrls.default.http[0]],
+          blockExplorerUrls: [eduChainTestnet.blockExplorers.default.url],
         },
       ],
     });
     return true;
   } catch (error) {
-    console.error("Failed to add Sonic Blaze Testnet:", error);
+    console.error("Failed to add EduChain Testnet:", error);
     return false;
   }
 };
 
-// Helper function to switch to Sonic Blaze Testnet
-export const switchToSonicBlazeTestnet = async () => {
+// Helper function to switch to EduChain Testnet
+export const switchToEduChainTestnet = async () => {
   if (!window.ethereum) {
     console.error("MetaMask not detected");
     return false;
@@ -67,15 +150,15 @@ export const switchToSonicBlazeTestnet = async () => {
   try {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: `0x${sonicBlazeTestnet.id.toString(16)}` }],
+      params: [{ chainId: `0x${eduChainTestnet.id.toString(16)}` }],
     });
     return true;
   } catch (error: any) {
     
     if (error.code === 4902) {
-      return addSonicBlazeTestnet();
+      return addEduChainTestnet();
     }
-    console.error("Failed to switch to Sonic Blaze Testnet:", error);
+    console.error("Failed to switch to EduChain Testnet:", error);
     return false;
   }
 };
